@@ -127,31 +127,40 @@ class UserInterface(GridLayout):
         self.message.text = str(output[key])
 
     def pythagorean(self):
-    	'''
-    	a method to calculate the pythagorean theorem based on the number and value of inputs users provide
-    	'''
+        '''
+        a method to calculate the pythagorean theorem based on the number and value of inputs users provide
+        '''
         a = self.input_a.text # leg
         b = self.input_b.text #leg
         c = self.input_c.text # hypotenuse
+        
+        if a != "":
+            a = float(a)
+            if a < 0:
+                return {"error": "oops! you added a negative number. Please provide a positive number"}
+        
+        if b != "":
+            b = float(b)
+            if b < 0:
+                return {"error": "oops! you added a negative number. Please provide a positive number"}
+
+        if c != "":
+            c = float(c)
+            if c < 0:
+                return {"error": "oops! you added a negative number. Please provide a positive number"}
 
         if a == "" and b!="" and c!="":
             # find a
-            b = float(b)
-            c = float(c)
             a = (c**2 - b**2)**(1/2)
             return {"a": str(a)}
 
         elif b == "" and a!="" and c!="":
             # find b
-            a = float(a)
-            c = float(c)
             b = (c**2-a**2)**(1/2)
             return {"b": str(b)}
 
         elif c == "" and a!="" and b!="":
             # find c
-            a = float(a)
-            b = float(b)
             c = (a**2+b**2)**(1/2)   
             return {"c": str(c)}
 
@@ -177,7 +186,7 @@ class Pythagorean(App):
 
 if __name__ == "__main__":
     Pythagorean().run()
-	
+    
 ############################################
 # code by: mariya sha
 # aka: the gal from python simplified 
